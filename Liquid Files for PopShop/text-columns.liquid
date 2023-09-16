@@ -41,6 +41,56 @@
 .page-width .grid__item .h3.rte--block::before {
     line-height: 1.5; /* Adjust this value to your preference */
 }
+
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 0px;
+}
+div.h3.rte--block {
+  font-size: 22px;
+}
+p {
+  font-size: 16px;
+  color: #181818;
+  font-weight: 400;
+}
+img {
+  background: #fff;
+}
+.index-section > div:nth-of-type(1) {
+  padding: 0 70px;
+}
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 26px;
+  }
+  div.h3.rte--block {
+    font-size: 22px;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  .index-section > div:nth-of-type(1) {
+    padding: 20px 10px;
+  }
+  img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    background: #ffffff;
+  }
+  .grid {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .grid__item {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+
+
 </style>
   
 <div class="index-section color-scheme-{{ section.settings.color_scheme }} text-columns-with-img">
