@@ -1,0 +1,453 @@
+{%- unless section.settings.full_width -%}
+  <div class="page-width hero--padded">
+{%- endunless -%}
+<style>
+  .hero__image-wrapper {
+    position: relative;
+  }
+
+  .custom-overlay {
+    position: absolute;
+    top: 200px; 
+    left: 90%; /* Shifted more to the left from 80% to 78% */
+    transform: translateX(-90%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 10px;
+    min-width: 200px;
+    max-width: 80%;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .custom-overlay h2,
+  .custom-overlay p,
+  .custom-button {
+    white-space: nowrap;
+    
+  }
+
+  .custom-overlay h2 {
+    margin: 0 0 -5px 0;
+    color: white;
+    font-size: 64px; /* Increased font size for desktop */
+    text-align: start;
+    align-self: flex-start;
+  }
+
+  .custom-overlay p {
+    margin: 15px 0;
+    margin-top: 5px;
+    color: white;
+    font-size: 28px; /* Increased font size slightly for desktop */
+    text-align: end;
+    font-weight: 600; /* Made the font slightly bolder */
+  }
+
+  .custom-button {
+    background: linear-gradient(to bottom, #a35aff, #ff5fbf);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem; /* Adjusted padding for increased font size */
+    font-size: 26px; /* Increased font size slightly for desktop */
+    font-weight: 600;
+    text-align: end;
+    line-height: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-right: 2rem;
+  }
+
+  .custom-button:hover {
+  color: #d9d9d9; /* light gray color */
+  transform: scale(1.05); /* Makes the button 5% larger */
+}
+
+
+/* Styles for screen sizes between 1800px and 3400px */ /* Styles for screen sizes between 1800px and 3400px */ /* Styles for screen sizes between 1800px and 3400px */
+@media only screen and (min-width: 1800px) and (max-width: 3400px) {
+    .custom-overlay {
+        top: 250px; 
+        left: 90%; 
+        transform: translateX(-90%);
+    }
+
+    .custom-button {
+      padding: 1rem 2rem;
+    }
+
+    .custom-overlay h2 {
+        font-size: 64px; /* Increase font size for larger screens */
+    }
+
+    .custom-overlay p {
+        font-size: 28px; /* Increase font size for larger screens */
+    }
+
+    .custom-button {
+        font-size: 26px; /* Increase font size for larger screens */
+        border-radius: 50px;
+    }
+}
+
+  
+
+/* Styles for iPad Air and iPad Mini */
+@media only screen and (min-width: 550px) and (max-width: 1200px) {
+    .custom-overlay {
+        top: 175px;
+        left: 50%;
+        max-width: 70%;
+        transform: translateX(-50%);
+        align-items: center;
+        margin: 0px;
+    }
+
+    .custom-overlay h2 {
+        font-size: 48px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .custom-overlay p {
+        font-size: 21px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .custom-button {
+        font-size: 20px;
+        padding: .75rem 1.2rem;
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
+/* Styles for screens smaller than 550px */
+@media only screen and (max-width: 550px) {
+    .custom-overlay {
+        top: 175px;
+      left: 50%;
+      max-width: 70%;
+      transform: translateX(-50%);
+      align-items: center;
+      margin: 0px;
+    }
+
+    .custom-overlay h2 {
+        font-size: 32px;
+      text-align: center;
+        font-weight: 600;
+    }
+
+    .custom-overlay p {
+        font-size: 18px;
+      text-align: center;
+        font-weight: 600;
+    }
+
+    .custom-button {
+        font-size: 17px;
+      padding: .75rem 1.2rem;
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
+
+
+
+  
+
+  
+  /* Styles for devices under 380px width */
+@media only screen and (max-width: 380px) {
+    .custom-overlay {
+        top: 165px; 
+        /* remaining properties if any can be kept the same unless you want further adjustments */
+      left: 50%;
+      max-width: 70%;
+      transform: translateX(-50%);
+      align-items: center;
+      margin: 0px;
+    }
+}
+
+
+
+
+
+  
+  
+
+  
+
+  
+</style>
+
+    
+  <div
+    data-section-id="{{ section.id }}"
+    data-section-type="slideshow-section"
+    {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+<div class="custom-overlay">
+                    <h2>{{ section.settings.header }}</h2>
+                    <p>{{ section.settings.subheader }}</p>
+                    {%- if section.settings.button_link != blank and section.settings.button_text != blank -%}
+                      <a href="{{ section.settings.button_link }}" class="custom-button">{{ section.settings.button_text }}</a>
+                    {%- endif -%}
+                  </div>
+    {%- if section.blocks.size > 0 -%}
+      <div class="slideshow-wrapper">
+        {%- if section.settings.autoplay and section.settings.style == 'bars' and section.blocks.size > 1 -%}
+          {%- style -%}
+            [data-bars][data-autoplay="true"] .flickity-page-dots .dot:after {
+              animation-duration: {{ section.settings.autoplay_speed | times: 1000 }}ms;
+            }
+          {%- endstyle -%}
+
+          <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+            <span class="slideshow__pause-stop">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pause" viewBox="0 0 10 13"><g fill="#000" fill-rule="evenodd"><path d="M0 0h3v13H0zM7 0h3v13H7z"/></g></svg>
+              <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+            </span>
+            <span class="slideshow__pause-play">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
+              <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+            </span>
+          </button>
+        {%- endif -%}
+
+        {%- assign natural_height_ratio = '60%' -%}
+        {%- assign natural_height_ratio_mobile = '100%' -%}
+        {%- for block in section.blocks limit: 1 -%}
+          {%- if block.settings.image != blank -%}
+            {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{% endcapture %}
+            {%- assign natural_height_ratio_mobile = natural_height_ratio -%}
+          {%- endif -%}
+          {%- if block.settings.image_mobile != blank -%}
+            {%- capture natural_height_ratio_mobile -%}{{ 100 | divided_by: block.settings.image_mobile.aspect_ratio }}%{% endcapture %}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- style -%}
+          .hero-natural--{{ section.id }} {
+            height: 0;
+            padding-bottom: {{ natural_height_ratio }};
+          }
+
+          @media screen and (max-width: 768px) {
+            .hero-natural--{{ section.id }} {
+              padding-bottom: {{ natural_height_ratio_mobile }};
+            }
+          }
+        {%- endstyle -%}
+
+        <div class="hero-natural--{{ section.id }}">
+          <div id="Slideshow-{{ section.id }}"
+            class="hero hero--{{ section.id }} loading loading--delayed"
+            data-natural="true"
+            data-autoplay="{{ section.settings.autoplay }}"
+            data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+            {% if section.settings.style == 'arrows' %}
+              data-arrows="true"
+            {% endif %}
+            {% if section.settings.style == 'dots' %}
+              data-dots="true"
+            {% endif %}
+            {% if section.settings.style == 'bars' %}
+              data-dots="true"
+              data-bars="true"
+            {% endif %}
+            data-slide-count="{{ section.blocks.size }}">
+            {%- for block in section.blocks -%}
+              <div
+                {{ block.shopify_attributes }}
+                class="slideshow__slide slideshow__slide--{{ block.id }}"
+                data-index="{{ forloop.index0 }}"
+                data-id="{{ block.id }}">
+                {%- liquid
+                  assign has_mobile_image = false
+                  if block.settings.image_mobile != blank
+                    assign has_mobile_image = true
+                  endif
+                -%}
+
+                <div class="hero__image-wrapper">
+                  
+
+                  {%- if section.settings.parallax -%}
+                    <div class="parallax-container">
+                      <div class="parallax-image">
+                  {%- endif -%}
+
+                    {%- if block.settings.image != blank -%}
+                      {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+                      <img class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                        src="{{ block.settings.image | img_url: '300x' }}"
+                        data-src="{{ img_url }}"
+                        data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ block.settings.image.alt | escape }}">
+                      {%- if has_mobile_image -%}
+                        {%- assign img_url_mobile = block.settings.image_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        <img class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
+                          src="{{ block.settings.image_mobile | img_url: '300x' }}"
+                          data-src="{{ img_url_mobile }}"
+                          data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
+                          data-sizes="auto"
+                          alt="{{ block.settings.image_mobile.alt | escape }}">
+                      {%- endif -%}
+                      <noscript>
+                        <img class="hero__image hero__image--{{ block.id }}"
+                          src="{{ block.settings.image | img_url: '1400x' }}"
+                          alt="{{ block.settings.image.alt | escape }}">
+                      </noscript>
+                    {%- else -%}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+
+                  {%- if section.settings.parallax -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"></a>
+                {%- endif -%}
+
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size == 0 -%}
+      <div class="placeholder-noblocks">
+        {{ 'home_page.onboarding.no_content' | t }}
+      </div>
+    {%- endif -%}
+  </div>
+{%- unless section.settings.full_width -%}
+  </div>
+{%- endunless -%}
+
+{% schema %}
+  {
+    "name": "Image (optional slides)",
+    "class": "index-section--hero",
+    "max_blocks": 5,
+    "settings": [
+      {
+            "type": "text",
+            "id": "header",
+            "label": "Header"
+          },
+          {
+            "type": "text",
+            "id": "subheader",
+            "label": "Subheader"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full page width"
+      },
+      {
+        "type": "select",
+        "id": "style",
+        "label": "Slide navigation style",
+        "default": "arrows",
+        "options": [
+          {
+            "value": "minimal",
+            "label": "Minimal"
+          },
+          {
+            "value": "arrows",
+            "label": "Arrows"
+          },
+          {
+            "value": "bars",
+            "label": "Bars"
+          },
+          {
+            "value": "dots",
+            "label": "Dots"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-change slides",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autoplay_speed",
+        "label": "Change images every",
+        "default": 7,
+        "min": 5,
+        "max": 10,
+        "step": 1,
+        "unit": "s"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Image link"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile image"
+          }
+          
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image (optional slides)",
+        "blocks": [
+          {
+            "type": "image"
+          }
+         
+        ]
+      }
+    ]
+  }
+{% endschema %}
