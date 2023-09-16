@@ -3,6 +3,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" defer></script>
 
 
+<style> 
+
+h2 {
+  font-size: 48px;
+}
+
+p {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+a.btn {
+  font-size: 24px;
+  transition: transform 0.3s;
+  padding: 16px 32px 16px 32px !important;
+}
+
+a.btn:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    h2 {
+      font-size: 32px; /* Adjusted size for mobile */
+    }
+    p {
+      font-size: 18px; /* Adjusted size for mobile */
+    }
+    a.btn {
+      font-size: 20px; /* Adjusted size for mobile */
+    }
+}
+
+</style>
+
+
+
 <div class="index-section color-scheme-{{ section.settings.color_scheme }} text-{{ section.settings.align_text }}">
   {%- if section.settings.color_scheme != 'none' -%}
     {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
