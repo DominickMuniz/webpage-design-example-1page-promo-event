@@ -34,7 +34,7 @@ Here are some screenshots of a beautifully designed webpage I created for a prod
 
 
 
-## Screenshot of Mobile View
+## Gif video demo of the images and fade transition effect in the slideshow section. plus full page view. 
 ![Screenshot of the feature](AI-Customizer-Event/Slider-images-demo.gif)
 
 
