@@ -35,7 +35,7 @@ Here are some screenshots of a beautifully designed webpage I created for a prod
 
 
 ## Screenshot of Mobile View
-![Screenshot of the feature](AI-Customizer-Event/PopShop.PopSockets.com-slideshow-demo-1.gif)
+![Screenshot of the feature](   )
 
 
 
