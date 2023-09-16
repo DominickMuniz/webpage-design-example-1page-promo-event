@@ -6,12 +6,36 @@ Here are some screenshots of a beautifully designed webpage I created for a prod
 
 ## The website was built with several breakpoints because it was a single page/landing page intended for our event. This event utilized Tablets, Desktops, and Mobile phones. We intentionally created specific breakpoints and positioning for each size. The following images show the design at different screen widths. 
 
-## File 1: 
-This is a chunk of code with some breif CSS styling to easily make it so you can display any text, ideally a header -- so that it looks like it is reflected.
 
-### Screenshot of Reflected Text 
+## Screenshot of Reflected Text 
 ![Screenshot of the feature](AI-Customizer-Event/006-PopSockets-PopUp-Store-popshop.popsockets.com.png)
 
 
-AI Customizer Evenet/FireShot Capture 007 - PopSockets PopUp Store – PopSockets Popup - Boulder - popshop.popsockets.com.png
+
+
+## Screenshot of Tablet View (iPad Air)
+![Screenshot of the feature](AI-Customizer-Event/008-PopSockets-PopUp-Store-popshop.popsockets.com.png)
+
+
+
+
+
+
+## Screenshot of Tablet View (iPad Mini)
+![Screenshot of the feature](AI-Customizer-Event/009-PopSockets-PopUp-Store-popshop.popsockets.com.png)
+
+
+
+
+
+## Screenshot of Mobile View
+![Screenshot of the feature](AI-Customizer-Event/010-PopSockets-PopUp-Store-popshop.popsockets.com.png)
+
+
+
+
+
+
+
+
 
