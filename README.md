@@ -35,7 +35,7 @@ Here are some screenshots of a beautifully designed webpage I created for a prod
 
 
 ## Screenshot of Mobile View
-![Screenshot of the feature](   )
+![Screenshot of the feature](AI-Customizer-Event/Slider-images-demo.gif)
 
 
 
